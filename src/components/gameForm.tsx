@@ -97,7 +97,6 @@ export default function Form() {
               const randomIndex = Math.floor(Math.random() * filteredList.length);
               const gameIndex = filteredList[randomIndex];
         
-              // BUSCA OS DETALHES NA HORA (Imperativo)
               const details = await queryClient.fetchQuery({
                 queryKey: ['game', gameIndex.id],
                 queryFn: () => GamesController.listGameDetails(gameIndex.id),

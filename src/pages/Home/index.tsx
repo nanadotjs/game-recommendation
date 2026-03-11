@@ -1,10 +1,12 @@
 import { GameCard } from "@/components/gameCard";
 import Form from "@/components/gameForm";
+import { Wishlist } from "@/components/wishList";
 import { useGame } from "@/hooks/useGame";
+import { useWishlist } from "@/hooks/useWishlist";
 
 export default function Home() {
-  const { randomGame, } = useGame();
-
+  const { randomGame } = useGame();
+  const { wishlist } = useWishlist();
 
     return (
       <>
@@ -19,6 +21,7 @@ export default function Home() {
         <Form />
         </div>
         {randomGame && <GameCard />}
+        {wishlist.length > 0 && <Wishlist />}
         </>
     )
 }
