@@ -13,10 +13,12 @@ import {
 } from "@/components/ui/combobox"
 
 type CategoryProps = {
-    data: string[]
+    data: string[];
+    value?: string[];
+    onValueChange?: (value: string[]) => void;
 }
 
-export function ComboSelect({ data }: CategoryProps) {
+export function ComboSelect({ data,value, onValueChange }: CategoryProps) {
   const anchor = useComboboxAnchor()
 
   return (
@@ -25,15 +27,19 @@ export function ComboSelect({ data }: CategoryProps) {
       multiple
       autoHighlight
       items={data}
+      value={value}
+      onValueChange={onValueChange}
     >
       <ComboboxChips ref={anchor}>
         <ComboboxValue>
           {(values) => (
             <React.Fragment>
-              {values.map((value: string) => (
-                <ComboboxChip key={value}>{value}</ComboboxChip>
+              {values.map((val: string) => (
+                <ComboboxChip key={val}>
+                  {val}
+                </ComboboxChip>
               ))}
-              <ComboboxChipsInput />
+              <ComboboxChipsInput placeholder="Selecione" className="placeholder:text-gray-500" />
             </React.Fragment>
           )}
         </ComboboxValue>

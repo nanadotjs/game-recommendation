@@ -7,14 +7,16 @@ import {
     SelectValue,
   } from "@/components/ui/select"
 
-type CategoryProps = {
-    data: string[]
+type PlatformProps = {
+    data: string[];
+    value?: string;
+    onValueChange?: (value: string | null) => void;
 }
   
-  export function SelectPlatform({ data }: CategoryProps) {
+  export function SelectPlatform({ data, value, onValueChange }: PlatformProps) {
     return (
-        <Select>
-          <SelectTrigger className="lg:max-w-[300px] min-w-[140px]">
+        <Select value={value} onValueChange={onValueChange}>
+          <SelectTrigger className={`lg:max-w-[300px] min-w-[140px] transition-colors ${value ? "text-white" : "text-gray-400"}`}>
             <SelectValue placeholder="Selecione" />
           </SelectTrigger>
           <SelectContent>

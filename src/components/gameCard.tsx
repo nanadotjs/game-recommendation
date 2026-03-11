@@ -8,30 +8,41 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { useGame } from "@/hooks/useGame"
+import { useGameDetail } from "@/services/queries/useGameDetails"
 
 export function GameCard() {
+  const { randomGame } = useGame();
+  const { data: details, isLoading } = useGameDetail(randomGame?.id);
+
+  if (isLoading) return <div></div>;
+
   return (
-    <Card className="relative mx-5 md:mx-auto max-w-sm pt-0 bg-[#16151B]">
+    <Card className="relative mx-5 md:mx-auto max-w-lg pt-0 bg-[#16151B]">
       <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
       <img
-        src="https://avatar.vercel.sh/shadcn1"
-        alt="Event cover"
-        className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
+        src={details?.thumbnail}
+        alt="cover"
+        className="relative z-20 aspect-video w-full object-cover"
       />
       <CardHeader>
         <CardAction>
-          <Badge variant="secondary" className="bg-[#2c273e] text-white p-3">Jagex</Badge>
+          <Badge variant="secondary" className="bg-[#2c273e] text-white p-3">{details?.developer}</Badge>
         </CardAction>
-        <CardTitle className="text-orange-400">RuneScape</CardTitle>
+        <CardTitle className="text-orange-400">{details?.title}</CardTitle>
         <CardDescription>
-          <p className="text-sm/6 underline">MMORPG</p>
-          <p className="text-base my-3">A popular 3D browser MMORPG boasting a huge player base and 15 years of content.</p>
-          <p className="text-sm/6">Para: Windows, Web Browser</p>
-          <p className="text-sm/6">Lançamento: 2001-01-04</p>
+          <p className="text-sm/6 underline">{details?.genre}</p>
+          <p className="text-base my-3">{details?.short_description}</p>
+          <p className="text-sm/6">Para: {details?.platform}</p>
+          <p className="text-sm/6">Lançamento: 11111</p>
         </CardDescription>
       </CardHeader>
       <CardFooter>
-        <Button className="w-full bg-orange-400 text-[#2c273e] hover:bg-orange-500 cursor-pointer">Detalhes</Button>
+      <a href={details?.game_url} target="_blank" rel="noopener noreferrer" className="w-full block">
+        <Button className="w-full bg-orange-400 text-[#2c273e] hover:bg-orange-500 cursor-pointer">
+          Ver detalhes
+        </Button>
+      </a>
       </CardFooter>
     </Card>
   )
