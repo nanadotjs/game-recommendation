@@ -26,3 +26,8 @@ O sistema criado pela desenvolvedora é uma plataforma online para computadores,
 1. Após clonar o projeto no terminal instale as dependências com npm install ou yarn e inicie o servidor com nrm run dev ou yarn run dev
    * Como o projeto foi criado com Vite, por padrão ele roda na porta :5173
 2. Acesse http://localhost:5173
+
+## ADENDO
+
+O repositório possui o arquivo .env. Nele eu referencio uma API pública, não é uma boa prática pois geralmente esse arquivo contém dados sensíveis porém NESSE CASO para questões de 1. Teste 2. Facilidade 3. Nenhum dado sensível ele está no repositório e não foi adicionado ao .gitignore 
+-- então sim eu sei ;)
