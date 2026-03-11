@@ -1,73 +1,28 @@
-# React + TypeScript + Vite
+# Recomendação de game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O sistema criado pela desenvolvedora é uma plataforma online para computadores, celulares e tablets que que sugere aleatoriamente uma recomendação de jogo digital conforme: gênero, plataforma e/ou RAM informado.
 
-Currently, two official plugins are available:
+## Descrição do projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- O que não é: um aplicativo, um sistema que pode ser acessado sem acesso à internet, um banco de dados, um site hospedado na internet, uma loja virtual.
+- O que faz: valida se pelo menos 1 gênero foi informado sendo o único campo obrigatório, valida se o número de memória RAM foi informado, valida se o campo de plataforma foi informado, ao filtrar os resultados retorna um jogo aleatoriamente a partir de uma função, se nenhum jogo for encontrado exibe uma mensagem amigável orientando o usuário a alterar os filtros, se adapta ao tamanho da tela, consume a API Free-To-Play Games Database, exibe na tela nome, desenvolvedor, gênero, descrição, data de lançamento plataforma e link do jogo escolhido. SUGESTÕES: salva localmente uma wishlist de jogos para o usuário poder visualizar os que lhe interessaram e comparar, limita 10 requisições por minuto (rate limit), adiciona e remove os jogos da wishlist, os jogos salvos redirecionam pra seu site para mais informações.
+- O que não faz: gera link para pagamento, download. SUGESTÃO: não salva a wishlist num banco de dados.
 
-## React Compiler
+## Tecnologias
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- Vite
+- Shadcn
+- Tailwind
+- Typescript
 
-## Expanding the ESLint configuration
+## Pré requisitos
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js v18+
+- npm ou yarn
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Instalação
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Após clonar o projeto no terminal instale as dependências com npm install ou yarn e inicie o servidor com nrm run dev ou yarn run dev
+   * Como o projeto foi criado com Vite, por padrão ele roda na porta :5173
+2. Acesse http://localhost:5173
