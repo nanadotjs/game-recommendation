@@ -7,7 +7,7 @@ export interface Game {
     genre: string,
     platform: string,
     developer: string,
-    release_date: Date,
+    release_date: string,
     minimum_system_requirements?: {
         memory: string,
     }    
