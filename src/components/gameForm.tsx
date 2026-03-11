@@ -123,8 +123,8 @@ export default function Form() {
         }
 
     return (
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex items-center w-full">
-        <FieldGroup>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
+        <FieldGroup className="items-start">
           <Controller
             name="category"
             control={form.control}
@@ -137,7 +137,7 @@ export default function Form() {
                   onValueChange={field.onChange}
                 />
                 {fieldState.invalid && (
-                  <FieldError errors={[fieldState.error]} />
+                  <FieldError errors={[fieldState.error]} className="min-h-[20px]" />
                 )}
               </Field>
             )}
@@ -173,7 +173,7 @@ export default function Form() {
             )}
           />
   
-          <Field orientation="horizontal" className="flex items-end">
+          <Field orientation="horizontal" className="flex mt-7">
             <Button type="button" variant="outline" onClick={() => form.reset()} className="text-sm px-6 py-2.5 cursor-pointer bg-transparent hover:bg-orange-400 text-white">
               Limpar
             </Button>

@@ -38,18 +38,23 @@ export function Wishlist() {
                             />
                             
                             <div className="absolute z-40 inset-0 flex flex-col items-center justify-center p-4 text-center">
-                                <p className="text-orange-400 text-xl font-bold mb-2 drop-shadow-lg">
+                            <p className="items-center bg-[linear-gradient(144deg,#f9b16e,#f68080_50%,#f89b29)] shadow-[rgba(151,65,252,0.2)_0_15px_30px_-5px] box-border text-white flex text-md justify-center leading-[1em] max-w-full min-w-[140px] select-none whitespace-nowrap cursor-pointer transition-all duration-[0.3s] p-[3px] rounded-lg border-0 active:scale-90">
+                                <span className="bg-[rgb(5,6,45)] w-full h-full transition-[300ms] px-4 py-3 rounded-md hover:bg-transparent">
                                     {item.title}
-                                </p>
+                                </span>
+                            </p>
                                 
                                 <Button
-                                    className="cursor-pointer underline text-orange-400 hover:text-orange-300 font-semibold" 
-                                    onClick={() => addToWishlist(item)}
+                                    className="cursor-pointer underline text-white hover:text-orange-300 font-semibold mt-3 text-xs" 
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        addToWishlist(item);
+                                    }}
                                 >
                                     Remover
                                 </Button>
                             </div>
-                            </a>
+                        </a>
                         </div>
                     </Card>
                 ))}
